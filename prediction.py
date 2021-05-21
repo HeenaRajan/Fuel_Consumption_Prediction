@@ -21,7 +21,7 @@ def preprocess_origin_cols(df):
     return df
 
 
-acc_ix, hpower_ix, cyl_ix = 3, 5, 1
+acc_ix, hpower_ix, cyl_ix = 4, 2, 0
 
 class CustomAttrAdder(BaseEstimator, TransformerMixin):
     def __init__(self, acc_on_power=True):
