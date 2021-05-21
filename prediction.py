@@ -17,14 +17,14 @@ from sklearn.compose import ColumnTransformer
 
 
 def preprocess_origin_cols(df):
-    df["Origin"] = df["Origin"].map({1: "India", 2: "USA", 3: "Germany"})
+    df["origin"] = df["origin"].map({1: "India", 2: "USA", 3: "Germany"})
     return df
 
 
 acc_ix, hpower_ix, cyl_ix = 3, 5, 1
 
 class CustomAttrAdder(BaseEstimator, TransformerMixin):
-    def __init__(self, acc_on_power=True): # no *args or **kargs
+    def __init__(self, acc_on_power=True):
         self.acc_on_power = acc_on_power
     def fit(self, X, y=None):
         return self  # nothing else to do
@@ -52,7 +52,7 @@ def num_pipeline_transformer(data):
 
 def pipeline_transformer(data):
     
-    cat_attrs = ["Origin"]
+    cat_attrs = ["origin"]
     num_attrs, num_pipeline = num_pipeline_transformer(data)
     
     full_pipeline = ColumnTransformer([
